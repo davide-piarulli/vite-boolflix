@@ -5,16 +5,16 @@ export default {
   data() {
     return {
       store,
-      tosearch: "",
+      search: "",
     };
   },
   methods: {
     toSearch() {
       store.queryparam = {
-        query: this.tosearch,
+        query: this.search,
       };
       this.$emit("toSearch");
-      this.tosearch = "";
+      this.search = "";
     },
   },
   mounted() {
@@ -32,7 +32,7 @@ export default {
         </div>
         <div class="col d-flex">
           <input
-            v-model.trim="tosearch"
+            v-model.trim="search"
             @keyup.enter="toSearch"
             type="text"
             class="form-control w-25"

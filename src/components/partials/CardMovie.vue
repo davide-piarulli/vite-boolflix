@@ -3,10 +3,10 @@ import { store } from '../../data/store';
 export default {
   props: {
     title: String,
-    org_title: String,
-    language: String,
+    original_title: String,
+    original_language: String,
     vote: Number,
-    overview: String,
+    // overview: String,
     img: String,
   },
 };
@@ -17,14 +17,14 @@ export default {
     <div class="flip-card">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="" class="w-100" alt="Avatar" />
+          <img :src="img" class="w-100" :alt="title" />
         </div>
         <div class="flip-card-back">
           <p><strong>Titolo</strong>: {{ title }}</p>
-          <p><strong>Titolo originale</strong>: {{ org_title }}</p>
-          <p><strong>Lingua</strong>: {{ language }}</p>
+          <p><strong>Titolo originale</strong>: {{ original_title }}</p>
+          <p><strong>Lingua</strong>: {{ original_language }}</p>
           <p><strong>Voto</strong>: {{ vote }}</p>
-          <p><strong>Trama</strong>: {{ overview }}</p>
+          <!-- <p><strong>Trama</strong>: {{ overview }}</p> -->
         </div>
       </div>
     </div>

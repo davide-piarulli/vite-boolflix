@@ -26,7 +26,6 @@ export default {
         //   },
         // })
         .then((result) => {
-          console.log(result.data.results);
           store.moviesList = result.data.results;
           console.log(store.moviesList);
         })
@@ -42,7 +41,7 @@ export default {
 </script>
 
 <template>
-  <Header @startSearch="getApi" />
+  <Header @toSearch="getApi" />
   <Main />
 </template>
 
