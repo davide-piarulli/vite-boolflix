@@ -1,9 +1,9 @@
 <script>
-import Card from "./partials/Card.vue";
+import CardMovie from "./partials/CardMovie.vue";
 import { store } from "../data/store";
 export default {
   components: {
-    Card,
+    CardMovie,
   },
   data() {
     return {
@@ -14,7 +14,18 @@ export default {
 </script>
 
 <template>
-  <div>questo è il MAIN</div>
+  <div class="container">
+    <h2>FILM</h2>
+    <div class="row row-col-4 py-3">
+      <CardMovie
+        v-for="movie in store.moviesList"
+        :key="movie.id"
+        :title="movie.title"
+      />
+    </div>
+  </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use "../assets/scss/main.scss";
+</style>

@@ -5,13 +5,49 @@ export default {
   data() {
     return {
       store,
+      tosearch: "",
     };
+  },
+  methods: {
+    toSearch() {
+      store.queryparam = {
+        query: this.tosearch,
+      };
+      this.tosearch = "";
+      this.$emit("toSearch");
+    },
+  },
+  mounted() {
+    this.toSearch();
   },
 };
 </script>
 
 <template>
-  <div>questo è l'header</div>
+  <header>
+    <div class="container h-100">
+      <div class="row d-flex h-100">
+        <div class="col title">
+          <h1>BOOLFLIX</h1>
+        </div>
+        <div class="col d-flex">
+          <input
+            v-model.trim="tosearch"
+            @keyup.enter="toSearch"
+            type="text"
+            class="form-control w-25"
+          />
+          <button @click="toSearch" class="btn btn-danger">Search</button>
+        </div>
+      </div>
+    </div>
+  </header>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use "../assets/scss/main.scss";
+header {
+  height: 100px;
+  background-color: black;
+}
+</style>

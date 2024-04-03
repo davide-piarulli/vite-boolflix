@@ -8,11 +8,37 @@ export default {
     Header,
     Main,
   },
+  data() {
+    return {
+      // axios,
+    };
+  },
+  methods: {
+    getApi() {
+      axios
+        .get(`${store.apiUrl}?api_key=${store.apiKey}`, {
+          params: {
+            query: store.tosearch,
+            language: "it-IT",
+          },
+        })
+        .then((result) => {
+          console.log(store.moviesList);
+          store.moviesList = result.data.results;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
+  mounted() {
+    this.getApi();
+  },
 };
 </script>
 
 <template>
-  <Header />
+  <Header @startSearch="getApi" />
   <Main />
 </template>
 
