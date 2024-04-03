@@ -13,8 +13,8 @@ export default {
       store.queryparam = {
         query: this.tosearch,
       };
-      this.tosearch = "";
       this.$emit("toSearch");
+      this.tosearch = "";
     },
   },
   mounted() {
@@ -49,5 +49,12 @@ export default {
 header {
   height: 100px;
   background-color: black;
+  h1 {
+    color: white;
+  }
+  input,
+  button {
+    height: 50%;
+  }
 }
 </style>

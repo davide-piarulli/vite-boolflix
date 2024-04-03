@@ -9,22 +9,26 @@ export default {
     Main,
   },
   data() {
-    return {
-      // axios,
-    };
+    return {};
   },
   methods: {
     getApi() {
       axios
-        .get(`${store.apiUrl}?api_key=${store.apiKey}`, {
-          params: {
-            query: store.tosearch,
-            language: "it-IT",
-          },
+        // GET base
+        .get(store.apiUrl, {
+          params: store.queryparam,
         })
+        // GET con chiave dinamica
+        // .get(`${store.apiUrl}?api_key=${store.apiKey}`, {
+        //   params: {
+        //     query: store.tosearch,
+        //     language: "it-IT",
+        //   },
+        // })
         .then((result) => {
-          console.log(store.moviesList);
+          console.log(result.data.results);
           store.moviesList = result.data.results;
+          console.log(store.moviesList);
         })
         .catch((error) => {
           console.log(error);
