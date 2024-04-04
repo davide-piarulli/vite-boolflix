@@ -3,11 +3,9 @@ export default {
   props: {
     cardObj: Object,
   },
-  methods:{
-    flag(){
-
-    }
-  }
+  methods: {
+    flag() {},
+  },
 };
 </script>
 
@@ -25,8 +23,13 @@ export default {
             <strong>Titolo originale</strong>:
             {{ cardObj.original_title || cardObj.original_name }}
           </p>
-          <p><strong>Lingua</strong>: 
-            <!-- <img :src="" alt="">  -->
+          <p>
+            <strong>Lingua</strong>:
+            <img
+              :src="`../../../public/img/${cardObj.original_language}.png`"
+              :alt="cardObj.original_language"
+              class="flag"
+            />
           </p>
           <p><strong>Voto</strong>: {{ cardObj.vote_average }}</p>
           <p><strong>Trama</strong>: {{ cardObj.overview }}</p>
@@ -40,5 +43,8 @@ export default {
 @use "../../assets/scss/main.scss";
 p {
   color: black;
+}
+.flag {
+  width: 32px;
 }
 </style>
