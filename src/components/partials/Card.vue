@@ -1,19 +1,23 @@
 <script>
-import { store } from "../../data/store";
 export default {
   props: {
     cardObj: Object,
   },
+  methods:{
+    flag(){
+
+    }
+  }
 };
 </script>
 
 <template>
   <div class="col py-2">
     <h3>{{ type }}</h3>
-    <div class="flip-card">
+    <div class="flip-card card">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img :src="poster_path" class="w-100" :alt="title" />
+          <img src="" class="w-100" :alt="title" />
         </div>
         <div class="flip-card-back">
           <p><strong>Titolo</strong>: {{ cardObj.title || cardObj.name }}</p>
@@ -21,8 +25,11 @@ export default {
             <strong>Titolo originale</strong>:
             {{ cardObj.original_title || cardObj.original_name }}
           </p>
-          <p><strong>Lingua</strong>: {{ cardObj.original_language }}</p>
-          <p><strong>Voto</strong>: {{ cardObj.vote }}</p>
+          <p><strong>Lingua</strong>: 
+            <!-- <img :src="" alt="">  -->
+          </p>
+          <p><strong>Voto</strong>: {{ cardObj.vote_average }}</p>
+          <p><strong>Trama</strong>: {{ cardObj.overview }}</p>
         </div>
       </div>
     </div>

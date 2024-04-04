@@ -37,8 +37,8 @@ export default {
 
 <template>
   <Header @startSearch="startSearch" />
-  <CardsContainer type="movie" />
-  <CardsContainer type="tv" />
+  <CardsContainer type="movie" v-if="store.movie.length > 0" />
+  <CardsContainer type="tv" v-if="store.tv.length > 0 "/>
 </template>
 
 <style lang="scss" scoped>

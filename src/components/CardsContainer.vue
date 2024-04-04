@@ -25,7 +25,10 @@ export default {
   <div class="container">
     <h2>{{ title }}</h2>
     <div class="row row-cols-4 py-3">
-      <Card v-for="card in store[type]" :key="card.id" :cardObj="card" />
+      <Card
+        v-for="card in store[type]"
+        :key="card.id"
+        :cardObj="card" />
     </div>
   </div>
 </template>

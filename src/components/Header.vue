@@ -1,25 +1,12 @@
 <script>
-import axios from "axios";
 import { store } from "../data/store";
 export default {
   data() {
     return {
       store,
-      search: "",
     };
   },
-  methods: {
-    toSearch() {
-      store.queryparam = {
-        query: this.search,
-      };
-      this.$emit("toSearch");
-      this.search = "";
-    },
-  },
-  mounted() {
-    this.toSearch();
-  },
+  methods: {},
 };
 </script>
 
