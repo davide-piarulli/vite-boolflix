@@ -12,19 +12,11 @@ export default {
     return {};
   },
   methods: {
-    getApi() {
+    getMovies() {
       axios
-        // GET base
-        .get(store.apiUrl, {
-          params: store.queryparam,
+        .get(store.apiUrl + "movie", {
+          params: store.apiParams,
         })
-        // GET con chiave dinamica
-        // .get(`${store.apiUrl}?api_key=${store.apiKey}`, {
-        //   params: {
-        //     query: store.tosearch,
-        //     language: "it-IT",
-        //   },
-        // })
         .then((result) => {
           store.moviesList = result.data.results;
           console.log(store.moviesList);
@@ -33,15 +25,29 @@ export default {
           console.log(error);
         });
     },
+    getSeries() {
+      axios
+        .get(store.apiUrl + "tv", {
+          params: store.apiParams,
+        })
+        .then((result) => {
+          store.seriesList = result.data.results;
+          console.log(store.seriesList);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
   mounted() {
-    this.getApi();
+    this.getMovies();
+    this.getSeries();
   },
 };
 </script>
 
 <template>
-  <Header @toSearch="getApi" />
+  <Header @toSearch="getMovies" />
   <Main />
 </template>
 

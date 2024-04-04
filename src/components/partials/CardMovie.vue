@@ -17,7 +17,7 @@ export default {
     <div class="flip-card">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img :src="img" class="w-100" :alt="title" />
+          <img :src="poster_path" class="w-100" :alt="title" />
         </div>
         <div class="flip-card-back">
           <p><strong>Titolo</strong>: {{ title }}</p>
