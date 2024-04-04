@@ -2,53 +2,43 @@
 import axios from "axios";
 import { store } from "./data/store";
 import Header from "./components/Header.vue";
-import Main from "./components/Main.vue";
+import CardsContainer from "./components/CardsContainer.vue";
 export default {
   components: {
     Header,
-    Main,
+    CardsContainer,
   },
   data() {
-    return {};
+    return {
+      store,
+    };
   },
   methods: {
-    getMovies() {
+    getApi(type) {
       axios
-        .get(store.apiUrl + "movie", {
+        .get(store.apiUrl + type, {
           params: store.apiParams,
         })
-        .then((result) => {
-          store.moviesList = result.data.results;
-          console.log(store.moviesList);
-        })
-        .catch((error) => {
-          console.log(error);
+        .then((res) => {
+          store[type] = res.data.results;
+          console.log(store[type]);
         });
     },
-    getSeries() {
-      axios
-        .get(store.apiUrl + "tv", {
-          params: store.apiParams,
-        })
-        .then((result) => {
-          store.seriesList = result.data.results;
-          console.log(store.seriesList);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    startSearch() {
+      this.getApi("movie");
+      this.getApi("tv");
     },
   },
   mounted() {
-    this.getMovies();
-    this.getSeries();
+    this.startSearch();
   },
 };
 </script>
 
 <template>
-  <Header @toSearch="getMovies" />
-  <Main />
+  <Header @startSearch="startSearch" />
+  <CardsContainer type="movie" />
+  <CardsContainer type="tv" />
 </template>
 
 <style lang="scss" scoped>

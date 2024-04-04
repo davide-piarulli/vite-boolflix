@@ -32,12 +32,15 @@ export default {
         </div>
         <div class="col d-flex">
           <input
-            v-model.trim="search"
-            @keyup.enter="toSearch"
+            v-model.trim="store.apiParams.query"
+            @keyup.enter="$emit('startSearch')"
             type="text"
             class="form-control w-25"
+            placeholder="Cerca un Film"
           />
-          <button @click="toSearch" class="btn btn-danger">Search</button>
+          <button @click="$emit('startSearch')" class="btn btn-danger">
+            Search
+          </button>
         </div>
       </div>
     </div>
