@@ -26,7 +26,7 @@ export default {
           <p>
             <strong>Lingua</strong>:
             <img
-              :src="`../../../public/img/${cardObj.original_language}.png`"
+              :src="`../../../src/assets/img/${cardObj.original_language}.png`"
               :alt="cardObj.original_language"
               class="flag"
             />
