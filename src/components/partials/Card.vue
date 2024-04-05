@@ -23,8 +23,8 @@ export default {
 <template>
   <div class="col py-2">
     <h3>{{ type }}</h3>
-    <div class="flip-card card">
-      <div class="flip-card-inner">
+    <div class="flip-container">
+      <div class="flip-card card">
         <div class="flip-card-front">
           <img
             v-if="isPoster"
@@ -41,11 +41,13 @@ export default {
           />
         </div>
         <div class="flip-card-back">
+          <!-- TITOLI -->
           <p><strong>Titolo</strong>: {{ cardObj.title || cardObj.name }}</p>
           <p>
             <strong>Titolo originale</strong>:
             {{ cardObj.original_title || cardObj.original_name }}
           </p>
+          <!-- /TITOLI -->
 
           <!-- BANDIERE -->
           <p v-if="isFlag">
@@ -64,16 +66,16 @@ export default {
           <p>
             <strong>Voto</strong>:
             <span v-for="star in ratingStars()" :key="star">
-              <i class="fa-solid fa-star star"></i>
+              <i class="fa-solid fa-star star full"></i>
             </span>
 
             <span v-for="star in 5 - ratingStars()" :key="star">
-              <i class="fa-regular fa-star"></i>
+              <i class="fa-regular fa-star star empty"></i>
             </span>
           </p>
           <!-- /STELLINE -->
 
-          <p><strong>Trama</strong>: {{ cardObj.overview }}</p>
+          <p class="overview"><strong>Trama</strong>: {{ cardObj.overview }}</p>
         </div>
       </div>
     </div>
@@ -82,13 +84,42 @@ export default {
 
 <style lang="scss" scoped>
 @use "../../assets/scss/main.scss";
-p {
-  color: black;
+.flip-container {
+  height: 450px;
+  &:hover .card {
+    transform: rotateY(180deg);
+  }
+  .card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+  }
 }
-.flag {
-  width: 32px;
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  align-items: center;
+  justify-content: center;
 }
-.star {
-  color: yellow;
+.flip-card-back {
+  transform: rotateY(180deg);
+  .flag {
+    width: 32px;
+  }
+  .star.full {
+    color: yellow;
+  }
+  .star.empty {
+    color: black;
+  }
+  .overview {
+    overflow-y: scroll;
+  }
 }
 </style>
