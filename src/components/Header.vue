@@ -13,9 +13,9 @@ export default {
 <template>
   <header>
     <nav class="navbar">
-      <div class="container">
-        <div class="row d-flex">
-          <div class="col-6 d-flex">
+      <div class="container-fluid">
+        <div class="row row-cols-1 row-cols-md-2 justify-content-around w-100">
+          <div class="col d-flex">
             <a class="navbar-brand" href="#">
               <img
                 src="/src/assets/img/favicon_io/android-chrome-512x512.png"
@@ -26,7 +26,9 @@ export default {
               />
               <h2 class="d-inline-block">BOOLFLIX</h2>
             </a>
-            <ul class="navbar-nav d-flex">
+            <ul
+              class="nav d-flex justify-content-around justify-content-center align-content-center"
+            >
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="#">Home</a>
               </li>
@@ -41,7 +43,7 @@ export default {
               </li>
             </ul>
           </div>
-          <div class="col-6 d-flex">
+          <div class="col d-flex">
             <input
               v-model.trim="store.apiParams.query"
               @keyup.enter="$emit('startSearch')"
@@ -64,10 +66,11 @@ export default {
 header {
   background-color: black;
   .navbar {
-    background-color: black;
-    // height: 100px;
     .nav-link {
       color: rgb(165, 165, 165);
+    }
+    li {
+      display: inline-block;
     }
     h2 {
       color: white;

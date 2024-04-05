@@ -119,7 +119,8 @@ export default {
     color: black;
   }
   .overview {
-    overflow-y: scroll;
+    overflow-y: auto;
+    height: 62%;
   }
 }
 </style>
