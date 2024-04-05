@@ -16,7 +16,7 @@ export default {
       <div class="container-fluid">
         <div class="row row-cols-1 row-cols-md-2 justify-content-around w-100">
           <div class="col d-flex">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand d-flex " href="#">
               <img
                 src="/src/assets/img/favicon_io/android-chrome-512x512.png"
                 alt="Logo"
@@ -24,13 +24,13 @@ export default {
                 height="50"
                 class="d-inline-block align-text-top"
               />
-              <h2 class="d-inline-block">BOOLFLIX</h2>
+              <h2 class="d-inline-block align-content-center">BOOLFLIX</h2>
             </a>
             <ul
               class="nav d-flex justify-content-around justify-content-center align-content-center"
             >
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">Home</a>
+                <a class="nav-link" href="#">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Movies</a>
@@ -43,7 +43,7 @@ export default {
               </li>
             </ul>
           </div>
-          <div class="col d-flex">
+          <div class="col d-flex justify-content-end ">
             <input
               v-model.trim="store.apiParams.query"
               @keyup.enter="$emit('startSearch')"
